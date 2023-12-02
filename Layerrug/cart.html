@@ -1,0 +1,322 @@
+<link rel="stylesheet" href="style.css">
+<style>
+  /* General Styles */
+  body {
+    font-family: cursive;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Cart Styles */
+  .cart {
+    text-align: center;
+    margin: 20px;
+  }
+
+  .cart-items {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cart-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+
+  .cart-item img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .cart-item-details {
+    margin-top: 10px;
+    color: #333;
+  }
+
+  .delete-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .delete-btn:hover {
+    background-color: #912b2b;
+  }
+
+  .buy-now-btn {
+    background-color: #2e7b31;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .buy-now-btn:hover {
+    background-color: #45a049;
+  }
+
+  /* Address Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  /* Address Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 5px;
+  }
+
+  .modal input[type='text'] {
+    width: calc(100% - 18px);
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .modal-btns {
+    text-align: right;
+  }
+
+  .modal-btns button {
+    padding: 8px 16px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .modal-btns button[type='submit'] {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .modal-btns button[type='submit']:hover {
+    background-color: #45a049;
+  }
+
+  .modal-btns button[type='button'] {
+    background-color: #f44336;
+    color: white;
+  }
+
+  .modal-btns button[type='button']:hover {
+    background-color: #d32f2f;
+  }
+
+  .logo{
+  font-size: larger;
+  float: left;
+  width: 200px;
+  height: auto;
+  align-items: center;
+  
+}
+</style>
+</head>
+
+
+
+<body>
+
+  <header>
+    <div class="a">
+      <nav class="navbar">
+        <ul>
+          <span class="logo"><img src="img/logo.png" class="logo"></span>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#order">Your Order</a></li>
+          <li><a href="cart.html" id="cartLink">Cart</a></li>
+        </ul>
+      </nav>
+    </div>
+    <br>
+    
+  </header>
+  <div class="cart" id="cart">
+    <h2>Cart</h2>
+    <ul class="cart-items" id="cartItems">
+      <!-- Cart items will be displayed here -->
+    </ul>
+  </div>
+
+  <div id="addressModal" class="modal">
+    <div class="modal-content">
+      <h2>Enter Address Details</h2>
+      <form id="addressForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+        <div class="modal-btns">
+          <button type="submit">Confirm</button>
+          <button type="button" onclick="hideModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      refreshCart(); // Initial cart display
+    });
+
+    // Function to delete an item from the cart
+    function deleteCartItem(index) {
+      let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+      if (index > -1 && index < cartItems.length) {
+        cartItems.splice(index, 1); // Remove item from array
+        localStorage.setItem('cart', JSON.stringify(cartItems)); // Update cart in localStorage
+        refreshCart(); // Refresh cart display
+      }
+    }
+
+    // Function to add an item to the cart
+    function addToCart(name, image, price) {
+      const item = {
+        name: name,
+        image: image,
+        price: price
+      };
+
+      let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      cartItems.push(item);
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+      refreshCart(); // Refresh cart display
+    }
+
+    // Function to handle buying an item
+    function buyNow(name, price) {
+      const addressModal = document.getElementById('addressModal');
+      addressModal.style.display = 'block';
+
+      // Store item details for reference when the address is submitted
+      localStorage.setItem('currentPurchase', JSON.stringify({ name, price }));
+    }
+
+    // Function to hide the address modal
+    function hideModal() {
+      const addressModal = document.getElementById('addressModal');
+      addressModal.style.display = 'none';
+    }
+
+    // Function to handle submitting address details
+    document.getElementById('addressForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const name = formData.get('name');
+      const address = formData.get('address');
+
+      // Get the stored item details for purchase reference
+      const { name: itemName, price: itemPrice } = JSON.parse(localStorage.getItem('currentPurchase'));
+
+      alert(`Thank you for purchasing ${itemName} for $${itemPrice}. The item will be delivered to ${name} at ${address}.`);
+
+      // Clear the stored purchase details and hide the modal
+      localStorage.removeItem('currentPurchase');
+      hideModal();
+    });
+
+    // Function to refresh cart display
+    function refreshCart() {
+      const cartItemsContainer = document.getElementById('cartItems');
+      cartItemsContainer.innerHTML = '';
+
+      let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+      cartItems.forEach((item, index) => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('cart-item');
+
+        const itemImage = document.createElement('img');
+        itemImage.src = item.image;
+        itemImage.alt = item.name;
+        listItem.appendChild(itemImage);
+
+        const itemDetails = document.createElement('div');
+        itemDetails.classList.add('cart-item-details');
+
+        const itemName = document.createElement('p');
+        itemName.textContent = item.name;
+        itemDetails.appendChild(itemName);
+
+        const itemPrice = document.createElement('p');
+        itemPrice.textContent = `Price: $${item.price}`;
+        itemDetails.appendChild(itemPrice);
+
+        const buyNowButton = document.createElement('button');
+        buyNowButton.textContent = 'Buy Now';
+        buyNowButton.classList.add('buy-now-btn'); // Add the class for styling
+        buyNowButton.onclick = () => buyNow(item.name, item.price);
+        itemDetails.appendChild(buyNowButton);
+
+
+        const buttonSpacing = document.createElement('span');
+        buttonSpacing.style.margin = '0 5px'; // Adjust the amount of space as needed
+        itemDetails.appendChild(buttonSpacing);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('delete-btn'); // Add the class for styling
+        deleteButton.onclick = () => deleteCartItem(index);
+        itemDetails.appendChild(deleteButton);
+
+        listItem.appendChild(itemDetails);
+        cartItemsContainer.appendChild(listItem);
+      });
+    }
+
+
+  </script>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAYER RUGS</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+</head>
+
+<body>
+  <header class="header-content">
+    <div class="a" id="home"> <!-- Added 'id="home"' to the header for scrolling to the top -->
+      <nav class="navbar">
+        <ul>
+          <span class="logo-class"><img class="logo" src="img/logo.png" alt="logo"></span>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li> <!-- Updated anchor to target the products section -->
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#order">Your Order</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="cart.html" id="cartLink">Cart</a></li>
+        </ul>
+      </nav>
+    </div>
+    <br>
+    <div class="container-fluid px-lg-4 mt-4" id="ho">
+      <div class="swiper swiper-container" style="height: 400px;">
+        <div class="swiper-wrapper">
+          <!-- Swiper Slides -->
+          <div class="swiper-slide">
+            <img src="img/bg1.jpg" class="w-100 h-100 object-fit-cover" />
+          </div>
+          <div class="swiper-slide">
+            <img src="img/bg2.jpg" class="w-100 h-100 object-fit-cover" />
+          </div>
+          <div class="swiper-slide">
+            <img src="img/bg3.jpg" class="w-100 h-100 object-fit-cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </header>
+
+  <br><br>
+
+  <!-- Filter links -->
+  <div class="filters">
+    <button onclick="filterProducts('all')">All Products</button>
+    <button onclick="filterProducts('Modern')">Modern</button>
+    <button onclick="filterProducts('Classic')">Classic</button>
+    <button onclick="filterProducts('Unshaped')">Unshaped</button>
+  </div>
+  <main class="main-content" id="products">
+    <div class="product" data-category="Modern">
+      <h2>Modern 1</h2>
+      <br>
+      <img src="img/modern1.png" alt="Modern">
+      <p>Descriptionof Product.</p>
+      <p>Price: $19.99</p>
+      <button onclick="showConfirmation('Modern 1', 'img/modern1.png', 19.99)" class="add-to-cart-btn">Add to
+        Cart</button>
+      <button onclick="openModal()" class="buy-now-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-category="Modern">
+      <h2>Modern 2</h2>
+      <br>
+      <img src="img/modern2.png" alt="Modern">
+      <p>Description of Product.</p>
+      <p>Price: $24.99</p>
+      <button onclick="showConfirmation('Modern 2', 'img/modern2.png', 24.99)" class="add-to-cart-btn">Add to
+        Cart</button>
+      <button onclick="openModal()" class="buy-now-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-category="Modern">
+      <h2>Modern 3</h2>
+      <br>
+      <img src="img/modern3.png" alt="Modern">
+      <p>Description of Product.</p>
+      <p>Price: $19.99</p>
+      <button onclick="showConfirmation('Modern 3', 'img/modern3.png', 19.99)" class="add-to-cart-btn">Add to
+        Cart</button>
+      <button onclick="openModal()" class="buy-now-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-category="Classic">
+      <h2>Classic 1</h2>
+      <br>
+      <img src="img/classic1.jpg" alt="Classic">
+      <p>Description of Product.</p>
+      <p>Price: $19.99</p>
+      <button onclick="showConfirmation('Classic', 'img/classic1.jpg', 24.99)" class="add-to-cart-btn">Add to
+        Cart</button>
+        <button onclick="openModal()" class="buy-now-btn">Buy Now</button>
+      </div>
+
+    <div class="product" data-category="Classic">
+      <h2>Classic 2</h2>
+      <br>
+      <img src="img/classic1.jpg" alt="Classic">
+      <p>Description of Product.</p>
+      <p>Price: $19.99</p>
+      <button onclick="showConfirmation('Classic', 'img/classic1.jpg', 24.99)" class="add-to-cart-btn">Add to
+        Cart</button>
+        <button onclick="openModal()" class="buy-now-btn">Buy Now</button>
+    </div>
+
+    <div class="product" data-category="Unshaped">
+      <h2>Unshaped 1</h2>
+      <br>
+      <img src="img/unshaped1.png" alt="Unshaped">
+      <p>Description of Product.</p>
+      <p>Price: $19.99</p>
+      <button onclick="showConfirmation('Unshaped 1', 'img/unshaped1.png', 19.99)" class="add-to-cart-btn">Add to
+        Cart</button>
+        <button onclick="openModal()" class="buy-now-btn">Buy Now</button>
+      </div>
+
+    <div class="product" data-category="Unshaped">
+      <h2>Unshaped 2</h2>
+      <br>
+      <img src="img/unshaped2.png" alt="Unshaped">
+      <p>Description of Product.</p>
+      <p>Price: $29.99</p>
+      <button onclick="showConfirmation('Unshaped 2', 'img/unshaped2.png', 29.99)" class="add-to-cart-btn">Add to
+        Cart</button>
+        <button onclick="openModal()" class="buy-now-btn">Buy Now</button>
+      </div>
+
+      <div class="product" data-category="Unshaped">
+        <h2>Unshaped 3</h2>
+        <br>
+        <img src="img/unshaped1.png" alt="Unshaped">
+        <p>Description of Product.</p>
+        <p>Price: $19.99</p>
+        <button onclick="showConfirmation('Unshaped 1', 'img/unshaped1.png', 19.99)" class="add-to-cart-btn">Add to
+          Cart</button>
+          <button onclick="openModal()" class="buy-now-btn">Buy Now</button>
+        </div>  
+
+    <div id="confirmationModal" class="modal">
+      <div class="modal-content">
+        <p>Are you sure you want to add this item to your cart?</p>
+        <div class="modal-btns">
+          <button onclick="addToCart()" class="confirm-btn">Yes</button>
+          <button onclick="hideConfirmation()" class="cancel-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buy Now Modal -->
+    <div id="buyNowModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Enter Your Details</h2>
+        <form id="orderForm">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required><br><br>
+
+          <label for="address">Address:</label>
+          <input type="text" id="address" name="address" required><br><br>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required><br><br>
+
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" required><br><br>
+
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+    <br><br><br>
+  </main>
+  <div class="contact">
+
+    <main class="main-content">
+
+      <!-- Contact Us section
+      <section  class="contact-section">
+        <h1>Contact Us</h1>
+        <div class="contact-form">
+          <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="message" >Message:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+        <div class="map-section" id="contact"> -->
+          <!-- Google Map embedded iframe code -->
+          <!-- <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.8009551919966!2dYourLongitude!3dYourLatitude!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zYourLatitude!5e0!3m2!1sen!2sus!4v1637344972904!5m2!1sen!2sus"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </section> -->
+
+      <div class="container">
+        <div class="content">
+          <div class="left-side">
+            <div class="address details">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="topic">Address</div>
+              <div class="text-one">xyz, NP12</div>
+              <div class="text-two">abc</div>
+            </div>
+            <div class="phone details">
+              <i class="fas fa-phone-alt"></i>
+              <div class="topic">Phone</div>
+              <div class="text-one">+00000000</div>
+              <div class="text-two">+00000000</div>
+            </div>
+            <div class="email details">
+              <i class="fas fa-envelope"></i>
+              <div class="topic">Email</div>
+              <div class="text-one">xyz@gmail.com</div>
+              <div class="text-two">info.xyz@gmail.com</div>
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="topic-text">Send us a message</div>
+            <p>If you have any types of quries related to our rugs, you can send us message from here. It's our pleasure to help you.</p>
+          <form action="#">
+            <div class="input-box">
+              <input type="text" placeholder="Enter your name">
+            </div>
+            <div class="input-box">
+              <input type="text" placeholder="Enter your email">
+            </div>
+            <div class="input-box message-box">
+              <input type="text" placeholder="Enter your message">
+            </div>
+            <div class="button">
+              <input type="submit" value="Send Now" >
+            </div>
+          </form>
+        </div>
+        </div>
+      </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-content" id="about">
+      <p>&copy; 2023 Layerrug</p>
+      <p>Mob.No- 8445621552</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".swiper-container", {
+      spaceBetween: 30,
+      effect: "fade",
+      loop: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false
+      }
+    });
+
+    function filterProducts(category) {
+      const products = document.querySelectorAll('.product');
+      products.forEach(product => {
+        const productCategory = product.dataset.category;
+        if (category === 'all' || productCategory === category) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+
+    // Your existing JavaScript code for the cart functionality
+
+    // Function to open the Buy Now modal
+    function openModal() {
+      document.getElementById('buyNowModal').style.display = 'block';
+    }
+
+    // Function to close the Buy Now modal
+    function closeModal() {
+      document.getElementById('buyNowModal').style.display = 'none';
+    }
+
+    // Function to handle Buy Now form submission
+    document.getElementById('orderForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      closeModal(); // Close the modal after submission
+      alert('Order placed successfully!'); // Replace with your logic to handle the form submission
+    });
+
+    let currentItem = null;
+
+    // Function to show the confirmation modal
+    function showConfirmation(name, image, price) {
+      currentItem = { name, image, price };
+      const modal = document.getElementById('confirmationModal');
+      modal.style.display = 'block';
+    }
+
+    // Function to hide the confirmation modal
+    function hideConfirmation() {
+      const modal = document.getElementById('confirmationModal');
+      modal.style.display = 'none';
+    }
+
+    function addToCart() {
+      if (currentItem) {
+        const item = {
+          name: currentItem.name,
+          image: currentItem.image,
+          price: currentItem.price
+        };
+
+        // Retrieve existing cart items or create an empty array
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        cartItems.push(item);
+
+        // Store updated cart items in localStorage
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+
+        alert('Item added to cart!');
+      }
+      hideConfirmation();
+    }
+
+    // Get the 'Products' link from the navigation bar
+    const productsLink = document.querySelector('a[href="#products"]');
+    const headerHeight = document.querySelector('header').offsetHeight; // Get the header height
+
+    // Function to handle scrolling to the product section
+    function scrollToProducts(event) {
+      event.preventDefault(); // Prevent the default behavior of the link
+
+      const productSection = document.getElementById('products'); // Get the product section
+      const offsetTop = productSection.offsetTop - headerHeight; // Consider header height for smooth scroll
+
+      // Scroll smoothly to the product section
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+
+    // Add an event listener to handle the click on the 'Products' link
+    productsLink.addEventListener('click', scrollToProducts);
+
+    // Get the 'Home' link from the navigation bar
+    const homeLink = document.querySelector('a[href="#home"]');
+
+    // Function to handle scrolling back to the top
+    function scrollToTop(event) {
+      event.preventDefault(); // Prevent the default behavior of the link
+
+      // Scroll smoothly to the top of the page
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Add an event listener to handle the click on the 'Home' link
+    homeLink.addEventListener('click', scrollToTop);
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      const headerHeight = document.querySelector('header').offsetHeight; // Get the header height
+      const offsetTop = section.offsetTop - headerHeight; // Calculate the offset considering the header height
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+
+    // Rest of your JavaScript code
+
+    // Event listeners for 'Contact Us' and 'About Us' links
+    document.querySelector('a[href="#contact"]').addEventListener('click', function (event) {
+      event.preventDefault();
+      scrollToSection('contact');
+    });
+
+    document.querySelector('a[href="#about"]').addEventListener('click', function (event) {
+      event.preventDefault();
+      scrollToSection('about');
+    });
+
+
+
+    // Function to handle Contact Form submission
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
+      alert('Your message has been sent!');
+      // Reset the form after submission
+      document.getElementById('contactForm').reset();
+    });
+
+
+  </script>
+
+</body>
+
+</html>
